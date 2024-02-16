@@ -28,6 +28,7 @@ public class Main {
         // pilih product - add to cart
         WebElement addToCartButton = driver.findElement(By.xpath("//button[contains(text(),'Add to cart')]"));
         addToCartButton.click();
+        Utils.delay(1);
 
         // validasi, Assert login
         String expectedUrl = "https://www.saucedemo.com/inventory.html";
@@ -35,11 +36,23 @@ public class Main {
         System.out.println(currentUrl);
         Utils.assertLogin(currentUrl,expectedUrl);
 
-        // validasi, assert add to cart
         String expectedUrlAdd = "https://www.saucedemo.com/inventory.html";
         String currentUrlAdd = driver.getCurrentUrl();
         System.out.println(currentUrlAdd);
-        Utils.assertAddCart(currentUrlAdd,expectedUrlAdd);
+        Utils.assertAddCart(currentUrlAdd, expectedUrlAdd);
+
+        Utils.delay(1);
+        WebElement CartButton = driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a"));
+        CartButton.click();
+
+        //cart
+        String expectedUrlInventory = "https://www.saucedemo.com/cart.html";
+        String currentUrlInventory = driver.getCurrentUrl();
+        System.out.println(currentUrlInventory);
+        Utils.assertAddCart(currentUrlInventory, expectedUrlInventory);
+
+
+        //*[@id="shopping_cart_container"]/a
 
         Utils.delay(3); // 3 detik
         driver.quit();
