@@ -22,14 +22,4 @@ public class Utils {
             System.out.println("Add to Cart Failed");
         }
     }
-//    static void cartButton(){
-//        if (assertAddCart.getText().equals("1")) {
-//            System.out.println("Product added to cart successfully!");
-//        } else {
-//            System.out.println("Failed to add product to cart!");
-//        }
-//    } else {
-//        System.out.println("Login failed!");
-//    }
-//    }
 }

@@ -30,29 +30,23 @@ public class Main {
         addToCartButton.click();
         Utils.delay(1);
 
+        // klik cart
+        Utils.delay(1);
+        WebElement CartButton = driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a"));
+        CartButton.click();
+
         // validasi, Assert login
         String expectedUrl = "https://www.saucedemo.com/inventory.html";
         String currentUrl = driver.getCurrentUrl();
         System.out.println(currentUrl);
         Utils.assertLogin(currentUrl,expectedUrl);
 
-        String expectedUrlAdd = "https://www.saucedemo.com/inventory.html";
-        String currentUrlAdd = driver.getCurrentUrl();
-        System.out.println(currentUrlAdd);
-        Utils.assertAddCart(currentUrlAdd, expectedUrlAdd);
+        // validasi assert add to cart
+        String expectedCart = "Sauce Labs Backpack";
+        String actualCart = driver.findElement(By.xpath("//*[@id=\"item_4_title_link\"]/div")).getText();
+        Utils.assertAddCart(actualCart, expectedCart);
 
-        Utils.delay(1);
-        WebElement CartButton = driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a"));
-        CartButton.click();
-
-        //cart
-        String expectedUrlInventory = "https://www.saucedemo.com/cart.html";
-        String currentUrlInventory = driver.getCurrentUrl();
-        System.out.println(currentUrlInventory);
-        Utils.assertAddCart(currentUrlInventory, expectedUrlInventory);
-
-
-        //*[@id="shopping_cart_container"]/a
+        // //*[@id="item_4_title_link"]/div
 
         Utils.delay(3); // 3 detik
         driver.quit();
